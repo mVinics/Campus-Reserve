@@ -1,0 +1,342 @@
+/* =========================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+main {
+    padding-bottom: 40px;
+    padding-top: 30px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+
+header {
+    background-color: #1f4e78;
+    color: white;
+    padding: 18px 0;
+}
+
+.cabecalho-conteudo {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* =========================
+   CARTÕES E BLOCOS
+   ========================= */
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    padding: 24px;
+}
+
+.card h2 {
+    margin-bottom: 18px;
+}
+
+.card-autenticacao {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 620px;
+}
+
+.boas-vindas {
+    margin-bottom: 20px;
+}
+
+.painel-admin {
+    border-top: 5px solid #1f4e78;
+}
+
+.painel-bloco h3 {
+    margin-bottom: 10px;
+}
+
+.separador {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 32px 0;
+}
+
+.texto-auxiliar {
+    color: #5f6368;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   FORMULÁRIOS
+   ========================= */
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    background-color: white;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+.campo textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #1f4e78;
+    box-shadow: 0 0 0 3px rgba(31, 78, 120, 0.14);
+    outline: none;
+}
+
+.grade-campos {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* =========================
+   BOTÕES
+   ========================= */
+
+button {
+    background-color: #1f4e78;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 10px 18px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(31, 78, 120, 0.3);
+    outline-offset: 2px;
+}
+
+.grupo-botoes,
+.acoes-reserva {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.acoes-reserva {
+    margin-top: 15px;
+}
+
+.botao-secundario,
+.botao-excluir-reserva,
+.botao-excluir-usuario {
+    background-color: #dc3545;
+}
+
+.botao-neutro {
+    background-color: #6c757d;
+}
+
+.botao-aprovar-reserva {
+    background-color: #28a745;
+}
+
+.botao-rejeitar-reserva {
+    background-color: #fd7e14;
+}
+
+/* =========================
+   TÍTULOS COM AÇÕES
+   ========================= */
+
+.titulo-com-acao {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.titulo-com-acao h2,
+.titulo-com-acao h3 {
+    margin-bottom: 0;
+}
+
+/* =========================
+   LISTAS E CARTÕES DE DADOS
+   ========================= */
+
+.lista {
+    margin-top: 18px;
+}
+
+.item-lista {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 16px;
+}
+
+.item-lista:last-child {
+    margin-bottom: 0;
+}
+
+.item-lista h3 {
+    margin-bottom: 8px;
+}
+
+.item-lista p + p {
+    margin-top: 4px;
+}
+
+.usuario-card {
+    position: relative;
+}
+
+/* =========================
+   MENSAGENS
+   ========================= */
+
+.mensagem {
+    margin-top: 15px;
+    min-height: 24px;
+}
+
+.mensagem-erro {
+    color: #b00020;
+}
+
+.mensagem-sucesso {
+    color: #137333;
+}
+
+/* =========================
+   STATUS DAS RESERVAS
+   ========================= */
+
+.status-reserva,
+.status-usuario {
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-aprovada {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejeitada {
+    background-color: #ffe5b4;
+    color: #8a4b08;
+}
+
+.status-cancelada {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.reserva-pendente {
+    border-left: 6px solid #ffc107;
+}
+
+.reserva-aprovada {
+    border-left: 6px solid #28a745;
+}
+
+.reserva-rejeitada {
+    border-left: 6px solid #fd7e14;
+}
+
+.reserva-cancelada {
+    border-left: 6px solid #dc3545;
+    opacity: 0.85;
+}
+
+/* =========================
+   STATUS DOS USUÁRIOS
+   ========================= */
+
+.usuario-ativo {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.usuario-inativo {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+    .cabecalho-conteudo,
+    .titulo-com-acao {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .grade-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-botoes button,
+    .titulo-com-acao button {
+        width: 100%;
+    }
+}

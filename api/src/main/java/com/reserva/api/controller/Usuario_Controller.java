@@ -7,7 +7,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -20,10 +23,31 @@ public class Usuario_Controller {
     public ResponseEntity<Usuario_Response> cadastrar(
             @Valid @RequestBody Criar_Usuario_Request request
     ) {
-        Usuario_Response usuario = usuarioService.cadastrar(request);
+        Usuario_Response usuario =
+                usuarioService.cadastrar(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(usuario);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Usuario_Response>> listarTodos() {
+        return ResponseEntity.ok(
+                usuarioService.listarTodos()
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        usuarioService.excluir(
+                id,
+                authentication.getName()
+        );
+
+        return ResponseEntity.noContent().build();
     }
 }

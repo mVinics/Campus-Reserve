@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Reservas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- ========================= -->
+    <!-- CABEÇALHO -->
+    <!-- ========================= -->
+    <header>
+        <div class="container cabecalho-conteudo">
+            <h1>Sistema de Reservas</h1>
+
+            <button
+                type="button"
+                id="botaoLogout"
+                class="botao-secundario oculto"
+            >
+                Sair
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- ========================= -->
+        <!-- LOGIN -->
+        <!-- ========================= -->
+        <section id="secaoLogin" class="card card-autenticacao">
+            <h2>Entrar</h2>
+
+            <form id="formularioLogin">
+                <div class="campo">
+                    <label for="login">E-mail</label>
+                    <input
+                        type="email"
+                        id="login"
+                        name="login"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <div class="grupo-botoes">
+                    <button type="submit">
+                        Entrar
+                    </button>
+
+                    <button
+                        type="button"
+                        id="botaoMostrarCadastro"
+                        class="botao-neutro"
+                    >
+                        Criar uma conta
+                    </button>
+                </div>
+            </form>
+
+            <p id="mensagemLogin" class="mensagem" aria-live="polite"></p>
+        </section>
+
+        <!-- ========================= -->
+        <!-- CADASTRO PÚBLICO -->
+        <!-- ========================= -->
+        <section id="secaoCadastro" class="card card-autenticacao oculto">
+            <h2>Criar conta</h2>
+
+            <p class="texto-auxiliar">
+                Novas contas são cadastradas automaticamente com o perfil de aluno.
+            </p>
+
+            <form id="formularioCadastroPublico">
+                <div class="campo">
+                    <label for="cadastroNome">Nome</label>
+                    <input
+                        type="text"
+                        id="cadastroNome"
+                        maxlength="100"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="cadastroEmail">E-mail</label>
+                    <input
+                        type="email"
+                        id="cadastroEmail"
+                        maxlength="150"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="cadastroSenha">Senha</label>
+                    <input
+                        type="password"
+                        id="cadastroSenha"
+                        minlength="8"
+                        maxlength="100"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="grupo-botoes">
+                    <button type="submit">
+                        Criar conta
+                    </button>
+
+                    <button
+                        type="button"
+                        id="botaoVoltarLogin"
+                        class="botao-secundario"
+                    >
+                        Voltar
+                    </button>
+                </div>
+            </form>
+
+            <p id="mensagemCadastro" class="mensagem" aria-live="polite"></p>
+        </section>
+
+        <!-- ========================= -->
+        <!-- ÁREA AUTENTICADA -->
+        <!-- ========================= -->
+        <section id="areaSistema" class="oculto">
+            <!-- Informações do usuário -->
+            <section class="boas-vindas">
+                <h2>Bem-vindo ao sistema</h2>
+                <p id="informacoesUsuario"></p>
+            </section>
+
+            <!-- ========================= -->
+            <!-- RECURSOS -->
+            <!-- ========================= -->
+            <section class="card">
+                <div class="titulo-com-acao">
+                    <h2>Recursos disponíveis</h2>
+
+                    <button
+                        type="button"
+                        id="botaoCarregarRecursos"
+                        class="botao-neutro"
+                    >
+                        Atualizar recursos
+                    </button>
+                </div>
+
+                <div id="listaRecursos" class="lista">
+                    <p>Nenhum recurso carregado.</p>
+                </div>
+            </section>
+
+            <!-- ========================= -->
+            <!-- CRIAÇÃO DE RESERVA -->
+            <!-- ========================= -->
+            <section class="card">
+                <h2>Nova reserva</h2>
+
+                <form id="formularioReserva">
+                    <div class="campo">
+                        <label for="recursoId">Recurso</label>
+                        <select id="recursoId" required>
+                            <option value="">Selecione um recurso</option>
+                        </select>
+                    </div>
+
+                    <div class="grade-campos">
+                        <div class="campo">
+                            <label for="inicio">Data e hora de início</label>
+                            <input
+                                type="datetime-local"
+                                id="inicio"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="fim">Data e hora de fim</label>
+                            <input
+                                type="datetime-local"
+                                id="fim"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="quantidadeParticipantes">
+                            Quantidade de participantes
+                        </label>
+                        <input
+                            type="number"
+                            id="quantidadeParticipantes"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="justificativa">Justificativa</label>
+                        <textarea
+                            id="justificativa"
+                            maxlength="500"
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit">
+                        Criar reserva
+                    </button>
+                </form>
+
+                <p id="mensagemReserva" class="mensagem" aria-live="polite"></p>
+            </section>
+
+            <!-- ========================= -->
+            <!-- RESERVAS DO USUÁRIO -->
+            <!-- ========================= -->
+            <section class="card">
+                <div class="titulo-com-acao">
+                    <h2>Minhas reservas</h2>
+
+                    <button
+                        type="button"
+                        id="botaoCarregarReservas"
+                        class="botao-neutro"
+                    >
+                        Atualizar reservas
+                    </button>
+                </div>
+
+                <div id="listaReservas" class="lista">
+                    <p>Nenhuma reserva carregada.</p>
+                </div>
+            </section>
+
+            <!-- ========================= -->
+            <!-- PAINEL ADMINISTRATIVO -->
+            <!-- ========================= -->
+            <section id="secaoAdmin" class="card painel-admin oculto">
+                <h2>Painel administrativo</h2>
+
+                <!-- Reservas administrativas -->
+                <section class="painel-bloco">
+                    <div class="titulo-com-acao">
+                        <div>
+                            <h3>Todas as reservas</h3>
+                            <p class="texto-auxiliar">
+                                Aprove ou rejeite as solicitações pendentes.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="botaoCarregarTodasReservas"
+                            class="botao-neutro"
+                        >
+                            Atualizar reservas
+                        </button>
+                    </div>
+
+                    <div id="listaReservasAdmin" class="lista">
+                        <p>Nenhuma reserva carregada.</p>
+                    </div>
+                </section>
+
+                <hr class="separador">
+
+                <!-- Criação administrativa de conta -->
+                <section class="painel-bloco">
+                    <h3>Criar conta de aluno</h3>
+
+                    <form id="formularioUsuario">
+                        <div class="grade-campos">
+                            <div class="campo">
+                                <label for="novoUsuarioNome">Nome</label>
+                                <input
+                                    type="text"
+                                    id="novoUsuarioNome"
+                                    maxlength="100"
+                                    required
+                                >
+                            </div>
+
+                            <div class="campo">
+                                <label for="novoUsuarioEmail">E-mail</label>
+                                <input
+                                    type="email"
+                                    id="novoUsuarioEmail"
+                                    maxlength="150"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label for="novoUsuarioSenha">Senha</label>
+                            <input
+                                type="password"
+                                id="novoUsuarioSenha"
+                                minlength="8"
+                                maxlength="100"
+                                autocomplete="new-password"
+                                required
+                            >
+                        </div>
+
+                        <button type="submit">
+                            Criar conta
+                        </button>
+                    </form>
+
+                    <p id="mensagemUsuario" class="mensagem" aria-live="polite"></p>
+                </section>
+
+                <hr class="separador">
+
+                <!-- Usuários cadastrados -->
+                <section class="painel-bloco">
+                    <div class="titulo-com-acao">
+                        <h3>Usuários cadastrados</h3>
+
+                        <button
+                            type="button"
+                            id="botaoCarregarUsuarios"
+                            class="botao-neutro"
+                        >
+                            Atualizar usuários
+                        </button>
+                    </div>
+
+                    <div id="listaUsuarios" class="lista">
+                        <p>Nenhum usuário carregado.</p>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
