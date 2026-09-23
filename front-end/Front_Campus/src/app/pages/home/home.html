@@ -1,0 +1,125 @@
+<main class="min-h-screen bg-slate-100">
+
+  <!-- Cabeçalho -->
+  <header class="bg-white border-b border-slate-200">
+    <div
+      class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+    >
+      <div>
+        <h1 class="text-xl font-bold text-slate-800">
+          Campus Reserve
+        </h1>
+
+        <p class="text-sm text-slate-500">
+          Reserva de salas e laboratórios
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="text-sm font-medium text-red-600 hover:text-red-700"
+      >
+        Sair
+      </button>
+    </div>
+  </header>
+
+  <!-- Conteúdo -->
+  <section class="max-w-6xl mx-auto px-6 py-8">
+
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-slate-800">
+        Espaços disponíveis
+      </h2>
+
+      <p class="text-slate-500 mt-2">
+        Consulte as salas e laboratórios disponíveis para reserva.
+      </p>
+    </div>
+
+    @if (carregando) {
+      <div
+        class="bg-white border border-slate-200 rounded-xl p-8 text-center"
+      >
+        <p class="text-slate-500">
+          Carregando espaços...
+        </p>
+      </div>
+    }
+
+    @if (mensagemErro) {
+      <div
+        class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6"
+      >
+        <p class="text-red-700">
+          {{ mensagemErro }}
+        </p>
+      </div>
+    }
+
+    @if (!carregando && !mensagemErro && recursos.length === 0) {
+      <div
+        class="bg-white border border-slate-200 rounded-xl p-8 text-center"
+      >
+        <p class="text-slate-500">
+          Nenhum espaço cadastrado.
+        </p>
+      </div>
+    }
+
+    @if (!carregando && recursos.length > 0) {
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+
+        @for (recurso of recursos; track recurso.id) {
+
+          <article
+            class="bg-white rounded-xl border border-slate-200
+                   shadow-sm p-6 hover:shadow-md transition"
+          >
+
+            <div class="flex items-start justify-between gap-4">
+
+              <div>
+                <h3 class="text-lg font-semibold text-slate-800">
+                  {{ recurso.nome }}
+                </h3>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  {{ recurso.tipo }}
+                </p>
+              </div>
+
+              <span
+                class="text-xs font-medium bg-green-100
+                       text-green-700 px-3 py-1 rounded-full"
+              >
+                {{ recurso.status }}
+              </span>
+
+            </div>
+
+            <p class="text-sm text-slate-600 mt-4">
+              {{ recurso.descricao || 'Sem descrição.' }}
+            </p>
+
+            <button
+              type="button"
+              class="w-full mt-6 bg-blue-600 text-white
+                     font-medium py-2.5 rounded-lg
+                     hover:bg-blue-700 transition"
+            >
+              Reservar
+            </button>
+
+          </article>
+
+        }
+
+      </div>
+    }
+
+  </section>
+
+</main>
